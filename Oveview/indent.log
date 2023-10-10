@@ -1,0 +1,31 @@
+INFO:  latexindent.pl version 3.23.2, 2023-09-23, a script to indent .tex files
+       latexindent.pl lives here: D:/MiKTeX/scripts/latexindent/
+       Tue Oct 10 20:11:00 2023
+       Filename: d:\Inno\OMML\omml-project-f23\Oveview\Overview.tex
+INFO:  Processing switches:
+INFO:  Directory for backup files and indent.log:
+       d:\Inno\OMML\omml-project-f23\Oveview
+INFO:  Perl modules are being loaded from the following directories:
+       D:/Strawberry/perl/lib/FindBin.pm
+       D:/Strawberry/perl/vendor/lib/YAML/Tiny.pm
+       D:/Strawberry/perl/lib/File/Copy.pm
+       D:/Strawberry/perl/lib/File/Basename.pm
+       D:/Strawberry/perl/lib/Getopt/Long.pm
+       D:/Strawberry/perl/vendor/lib/File/HomeDir.pm
+INFO:  LatexIndent perl modules are being loaded from, for example:
+       D:/MiKTeX/scripts/latexindent/LatexIndent/Document.pm
+INFO:  YAML settings read: defaultSettings.yaml
+       Reading defaultSettings.yaml from D:/MiKTeX/scripts/latexindent/defaultSettings.yaml
+INFO:  YAML reading settings
+       Home directory is C:\Users\pro10
+       latexindent.pl didn't find indentconfig.yaml or .indentconfig.yaml
+       see all possible locations: https://latexindentpl.readthedocs.io/en/latest/sec-appendices.html#indentconfig-options)
+INFO:  Phase 1: searching for objects
+INFO:  Phase 2: finding surrounding indentation
+INFO:  Phase 3: indenting objects
+INFO:  Phase 4: final indentation check
+INFO:  Output routine:
+       Not outputting to file; see -w and -o switches for more options.
+       --------------
+INFO:  Please direct all communication/issues to:
+        https://github.com/cmhughes/latexindent.pl

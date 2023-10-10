@@ -1,0 +1,19 @@
+\begin{thebibliography}{1}
+
+\bibitem{Leclerc22}
+Guillaume Leclerc.
+\newblock {Graphs for Data}.
+\newblock In Amélie Jeunet and Tom Finn, editors, {\em {ICBE} '22: The 29th
+  International Conference on Bibliographical Examples, France, October 29-30,
+  2022}, pages 2233--2244. {ACM}, 2022.
+\newblock \href {https://doi.org/10.1145/9876543.2109876}
+  {\path{doi:10.1145/9876543.2109876}}.
+
+\bibitem{MurphyL20}
+Niamh Murphy and Seamus Lynch.
+\newblock {Graphs for Knowledge}.
+\newblock {\em Journal of Bibliographical Examples}, 10(5):872--903, 2020.
+\newblock \href {https://doi.org/10.1007/s12345-678-00009-x}
+  {\path{doi:10.1007/s12345-678-00009-x}}.
+
+\end{thebibliography}
