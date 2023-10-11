@@ -1,5 +1,15 @@
 \documentclass{article}
+
 \usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[hidelinks]{hyperref}
+\usepackage
+[
+        a4paper,
+        hmargin=3cm,
+        vmargin=2cm,
+]
+{geometry}
 
 \title{Loopless stochastic methods. Overview}
 \date{Fall 2023}
@@ -11,6 +21,108 @@
 
 \begin{document}
 \maketitle
-\section{Introduction}
+\section{L-SVRG and L-Katyusha}
+
+This section is devoted to the article
+\href{https://proceedings.mlr.press/v117/kovalev20a.html}
+{"Don`t Jump Through Hoops and Remove Those Loops:
+  SVRG and Katyusha are Better Without the Outer Loop"}.
+
+\subsection{Background}
+
+
+Authors deal with the \textbf{empirical risk minimization (finite-sum) problems},
+which have the following form:
+\[  \min_{x \in \mathbb{R}^d } f(x) \equiv \frac{1}{n} \sum_{i=1}^{n} f_i(x)
+\tag{1}\label{1} \]
+
+Finite-sum problems form the \textbf{dominant paradigm for training the supervised
+machine learning models}: \( f_i(x) \) is the loss of the model \(x\) on data point \(i\).
+
+The most remarkable algorithms for solving \eqref{1} are
+\textit{variance-reduced} stochastic gradients algorithms, which are significantly
+faster than SGD on (strongly) convex. However, these methods are not quite
+successful in general non-convex problems.
+
+Two of the most notable variance-reduced algorithms are \textbf{SVRG}
+(stochastic variance-reduced gradient) method and its accelerated variant
+known as \textbf{Katyusha}. Katyusha accelerates SVRG via employment
+"negative momentum" idea. Both methods have \textbf{a double loop design}:
+at the beginning of the outer loop, , a full pass over the training data is made
+to compute \textbf{the total gradient} of \(f\) at r eference point \(w_k\).
+In SVRG the reference point is chosen as the freshest iterate, and in Katyusha
+\(w_k\) is a weighted average of recent iterates. The total gradient is then
+used in the inner loop to \textit{adjust} the stochastic gradient
+\(\nabla f_i(x^k)\) (\(x^k\) is the current iterate). In particular, both methods
+perform the following adjustment:
+\[g^k=\nabla f_i(x^k)-\nabla f_i(w^k)+\nabla f(w^k). \tag{2}\label{2}\]
+It turns out that as methods progress, the variance of \(g^k\) progressively
+decreases to zero, what effects in \textbf{significantly faster convergence}.
+
+Under assumptions of \(L\)-smoothness and \(\mu\)-strongly convexity
+of \(f\), the iterations complexities are the followings:
+\begin{itemize}
+  \item \(\mathcal{O}((n+\frac{L}{\mu})\log \frac{1}{\epsilon} )\) for SVRG
+  \item \(\mathcal{O}((n+\sqrt{\frac{nL}{\mu}})\log \frac{1}{\epsilon} )\)
+  (accelerated) for Katyusha
+\end{itemize}
+what is vast improvement on linear rate of GD and sublinear rate of SGD.
+
+\subsection{Problem statement}
+As explained below, the key trade-mark structural feature of SVRG and Katyusha
+is presence of the outer loop where a pass over full data is made.
+However, the outer loop causes such problems as
+\begin{itemize}
+  \item The methods are hard to analyze
+  \item One needs to decide at which point to terminate the inner loop and
+  start the outer loop
+\end{itemize}
+Elaborating the second issue, the theoretically optimal inner loop size for SVRG
+depends on both \(L\) and \(\mu\). However, \(\mu\) is not always known, and
+even if estimate is available, it can be very loose. Due to these issues,
+inner loop size is often chosen in a suboptimal way.
+
+\subsection{Main idea}
+Authors address the above issues by developing \textbf{loopless} variant
+of both SVRG and Katyusha: L-SVRG and L-Katyusha respectively. In these methods,
+authors remove the outer loop and replace it with a \textit{biased coin-flip},
+which on every iteration decides if the gradient \(\nabla f(w^k)\) should be
+calculated. In particular, at each step the following happens:
+\begin{itemize}
+  \item With small probability \(p > 0\), the full pass over data is performed and
+  the reference gradient \(\nabla f(w^k)\) is updated
+  \item With probability \(1-p\), the previous reference gradient is kept.
+\end{itemize}
+This procedure can also be interpreted as \textbf{having an outer loop of
+random length}.
+
+\subsection{Results}
+The paper demonstrates that both proposed methods,
+L-SVRG and L-Katyusha, have the following advantages:
+\begin{enumerate}
+  \item Loopless methods are easier to write down and analyze
+  than original double loop implementations
+  \item Loopless methods have the same theoretical convergence rates
+  \item Loopless methods are superior to their loopy variants
+  \item L-SVRG is extremely robust to the choice of \(p\) within the
+  theoretical optimal interval
+\end{enumerate}
+
+The first point follows directly from the article: all the necessary proofs,
+lemmas and theorems are quite simple and compact. Moreover, most other
+theoretical results, as optimal interval of \(p\) for L-SVRG, are not
+sophisticated either.
+
+The second point is proved inside the article with the help of several lemmas and
+a couple of theorems.
+
+The third and fourth points are demonstrated through numerical experiments.
+In particular, authors show the following results:
+\begin{itemize}
+  \item \textit{The performance of L-Katyusha is at least as good as
+  that of Katyusha, and can be significantly faster in some causes}
+  \item \textit{Even the worst case for L-SVRG outperforms the best case for SVRG}
+\end{itemize}
+
 
 \end{document}
