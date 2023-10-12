@@ -124,5 +124,90 @@ In particular, authors show the following results:
   \item \textit{Even the worst case for L-SVRG outperforms the best case for SVRG}
 \end{itemize}
 
+\newpage
+
+\section{PAGE}
+
+This section is devoted to the article
+\href{https://proceedings.mlr.press/v139/li21a.html}
+{"PAGE: A simple and OPtimal Probabilistic Gradient Estimator for Nonconvex Optimization"}.
+
+\subsection{Problem statement}
+
+Authors deal with the following general optimization problem
+
+\[\min_{x\in \mathbb{R}^d} f(x), \tag{3} \label{3}\]
+where \(f: \mathbb{R}^d \rightarrow \mathbb{R}\) is differentiable and possibly non-convex function.
+
+Authors interested in function having \textbf{finite-sum} form 
+
+\[f(x) := \frac{1}{n} \sum_{i=1}^{n} f_i(x), \tag{4} \label{4}\]
+where the functions \(f_i\) are also differentiable and possibly non-convex. Form (\ref{4}) 
+represents empirical risk optimization problems in machine learning. Moreover if the 
+number of data samples \(n\) is very large or even infinite, then \(f(x)\) is usually modeled
+via the \textbf{online} form
+\[f(x) := \mathbb{E}_{\zeta \sim \mathcal{D}} [F(x, \zeta)], \tag{5} \label{5}\]
+for which solution is also applicable by letting \(f_i(x) := F(x\zeta)\).
+
+\subsection{Background}
+
+There are several methods for (\ref{3}) (e.g. SPIDER, SpiderBoost, 
+SARAH, SSRGD) with gradient complexity:
+\begin{itemize}
+  \item \(O(n+\frac{\sqrt{n}}{\epsilon^2})\) and 
+  \(\Omega(\frac{\sqrt{n}}{\epsilon^2})\) if \(n \leq O(\frac{1}{\epsilon^4})\) 
+  in the finite sum regime
+  \item \(O(b+\frac{\sqrt{b}}{\epsilon^2})\) in online regime
+\end{itemize} 
+At the same time SVRG has gradient complexity \(O(n+\frac{n^{2/3}}{\epsilon^2})\) in finite-sum 
+regime and \(\tilde{O}(b+\frac{\sqrt{b}}{\epsilon^2})\) for online case.
+These methods are complicated, often with double loop structure, and reliance on several hyperparameters.
+Moreover, there is no tight lower bound to show optimality of optimal methods in the online regime.
+
+\subsection{Main idea}
+
+PAGE method is based on vanilla SGD: in each iteration, Page uses the vanilla minibatch SGD update 
+with probability \(p_t\) or ruses the previous gradient with a small adjustment, at a much
+lower computational cost, with probability \(1-p_t\).
+
+PAGE has following gradient complexities:
+\begin{itemize}
+  \item \(O(n+\frac{\sqrt{n}}{\epsilon^2})\) and 
+  \(\Omega(n+\frac{\sqrt{n}}{\epsilon^2})\) 
+  in the finite sum regime
+  \item \(O(b+\frac{\sqrt{b}}{\epsilon^2})\) and
+  \(\Omega(b+\frac{\sqrt{b}}{\epsilon^2})\), where \(b:=\min\{\frac{\sigma^2}{\epsilon^2}, n\}\)  in online regime
+\end{itemize}
+However, Page has faster linear convergence rates for nonconvex functions under Polyak-Lojasiewicz
+(PL) condition:
+
+A function \(f: \mathbb{R}^d \rightarrow \mathbb{R}\) satisfies PL condition if \(\exists \mu > 0\)
+such that
+\[\|\nabla f(x)\|^2 \geq 2\mu (f(x)-f^*), \forall x \in \mathbb{R}^d.\]
+
+PAGE has following gradient complexities under PL condition:
+\begin{itemize}
+  \item \(O((n+\sqrt{n}\kappa)\log\frac{1}{\epsilon})\) in the finite sum regime
+  \item \(O((b+\sqrt{b}\kappa)\log\frac{1}{\epsilon})\) in online regime
+\end{itemize}
+
+\subsection{Experiments}
+
+Authors conduct several deep learning experiments for multi-class image classification.
+They compare PAGE algorithm with vanilla SGD by running standard LeNet, VGG, and ResNet 
+models on MNIST and CIFAR-10 datasets. Results of the experiments show practical 
+superiority that PAGE. 
+
+\subsection{Results}
+
+\begin{itemize}
+  \item PAGE has tight lower bounds for both non-convex finite-sum and online optimization problems.
+  \item PAGE optimal convergence results match lower bounds for both non-convex finite-sum and online problems.
+  \item PAGE is simple and optimal algorithm for both non-convex finite-sum and online optimization. 
+  \item PAGE is easy to implement.
+  \item PAGE can automatically switch to a faster linear 
+  convergence rate for nonconvex functions which satisfies PL condition.
+  \item Experiments results confirm practical superiority of PAGE.
+\end{itemize}
 
 \end{document}
