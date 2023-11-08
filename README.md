@@ -1,7 +1,9 @@
 # OMML IU F23 Project: Loopless stochastic methods
 
-by Dmitry Beresnev (<d.beresnev@innopolis.university>)
-and Vsevolod Klyushev Dmitry Beresnev (<v.klyushev@innopolis.university>)
+## Team
+
+- Dmitry Beresnev (<d.beresnev@innopolis.university>)
+- Vsevolod Klyushev (<v.klyushev@innopolis.university>)
 
 ## Introduction
 
