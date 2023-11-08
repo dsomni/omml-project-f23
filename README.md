@@ -29,7 +29,11 @@ I also highly recommend to read reports in corresponding `reports` folder to ful
 ├── pyproject.toml  # Formatter and linter settings
 ├── setup_precommit.sh  # Script for creating pre-commit GitHub hook
 |
-│
+├── data
+│   ├── interim     # Intermediate data that has been transformed
+│   └── raw         # The original, immutable data. Collected via src/mak_dataset.py script
+|       └── heart_attack_dataset.csv
+|
 ├── notebooks   #  Jupyter notebooks
 │   └── methods_comparison.ipynb  #  Compares methods from reference papers
 │
@@ -52,6 +56,10 @@ I also highly recommend to read reports in corresponding `reports` folder to ful
 ### Books
 
 - [Methods Of Convex Optimization by Yuri Nesterov, 2010](https://mipt.ru/dcam/upload/abb/nesterovfinal-arpgzk47dcy.pdf)
+
+### Datasets
+
+- [Heart Attack Analysis & Prediction Dataset](https://www.kaggle.com/datasets/rashikrahmanpritom/heart-attack-analysis-prediction-dataset/data)
 
 ## Contacts
 
