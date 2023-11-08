@@ -9,6 +9,8 @@ tqdm = "*"
 seaborn = "*"
 ipykernel = "*"
 matplotlib = "*"
+pandas = "*"
+argparse = "*"
 
 [dev-packages]
 ruff = "*"

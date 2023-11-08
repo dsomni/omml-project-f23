@@ -30,8 +30,8 @@ I also highly recommend to read reports in corresponding `reports` folder to ful
 ├── setup_precommit.sh  # Script for creating pre-commit GitHub hook
 |
 │
-├── notebooks       #  Jupyter notebooks
-│   └── TODO.ipynb
+├── notebooks   #  Jupyter notebooks
+│   └── methods_comparison.ipynb  #  Compares methods from reference papers
 │
 ├── references      # Reference papers
 │
@@ -48,6 +48,10 @@ I also highly recommend to read reports in corresponding `reports` folder to ful
 
 - [Don’t Jump Through Hoops and Remove Those Loops: SVRG and Katyusha are Better Without the Outer Loop](https://proceedings.mlr.press/v117/kovalev20a.html)
 - [PAGE: A Simple and Optimal Probabilistic Gradient Estimator for Nonconvex Optimization](https://proceedings.mlr.press/v139/li21a.html)
+
+### Books
+
+- [Methods Of Convex Optimization by Yuri Nesterov, 2010](https://mipt.ru/dcam/upload/abb/nesterovfinal-arpgzk47dcy.pdf)
 
 ## Contacts
 
