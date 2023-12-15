@@ -10,6 +10,7 @@ seaborn = "*"
 ipykernel = "*"
 matplotlib = "*"
 pandas = "*"
+torch = "*"
 
 [dev-packages]
 ruff = "*"
