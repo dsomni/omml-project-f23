@@ -4,16 +4,16 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-numpy = "*"
-tqdm = "*"
-seaborn = "*"
 ipykernel = "*"
+ruff = "*"
+numpy = "*"
 matplotlib = "*"
 pandas = "*"
+scikit-learn = "*"
 torch = "*"
+tqdm = "*"
 
 [dev-packages]
-ruff = "*"
 
 [requires]
 python_version = "3.11"
