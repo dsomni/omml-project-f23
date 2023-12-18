@@ -1,0 +1,23 @@
+{
+  "SVRG": {
+    "step_size": 0.1,
+    "batches_number": 100,
+    "epoch_length": 100
+  },
+  "L-SVRG": {
+    "step_size": 0.1,
+    "batches_number": 100,
+    "probability": 0.001
+  },
+  "SARAH": {
+    "step_size": 0.1,
+    "batch_size": 10,
+    "epoch_length": 200
+  },
+  "PAGE": {
+    "step_size": 0.1,
+    "batch_size_primary": 100,
+    "batch_size_secondary": 10,
+    "probability": 0.09
+  }
+}
