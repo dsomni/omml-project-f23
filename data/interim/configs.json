@@ -11,13 +11,13 @@
   },
   "SARAH": {
     "step_size": 0.1,
-    "batch_size": 10,
-    "epoch_length": 200
+    "batch_size": 100,
+    "epoch_length": 18
   },
   "PAGE": {
     "step_size": 0.1,
     "batch_size_primary": 100,
     "batch_size_secondary": 10,
-    "probability": 0.09
+    "probability": 0.1
   }
 }
